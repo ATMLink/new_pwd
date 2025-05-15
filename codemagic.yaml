@@ -5,17 +5,14 @@ workflows:
       flutter: stable
     scripts:
       - name: Clean Project
-        script: |
-          flutter clean
+        script: flutter clean
       - name: Install Dependencies
-        script: |
-          flutter pub get
+        script: flutter pub get
       - name: Build APK
-        script: |
-          flutter build apk --release --no-tree-shake-icons --verbose
+        script: flutter build apk --release --no-tree-shake-icons --verbose
     artifacts:
-      - build/**/outputs/**/*.apk
+      - build/app/outputs/flutter-apk/new_pwd.apk
     publishing:
       email:
         recipients:
-          - 2937582423@qq.com # 替换为你的邮箱
+          - 2937582423@qq.com

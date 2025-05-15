@@ -82,20 +82,42 @@
 // flutter {
 //     source '../..'
 // }
+// android {
+//     compileSdkVersion 34 // 匹配 Codemagic 的 SDK 34
+//     defaultConfig {
+//         applicationId "com.example.new_pwd" // 与 AndroidManifest.xml 保持一致
+//         minSdkVersion 21 // 根据项目需求调整
+//         targetSdkVersion 34
+//         versionCode 1
+//         versionName "1.0"
+//     }
+//     buildTypes {
+//         release {
+//             signingConfig null // 禁用签名
+//             minifyEnabled false // 禁用代码压缩
+//             shrinkResources false
+//         }
+//     }
+// }
 android {
-    compileSdkVersion 34 // 匹配 Codemagic 的 SDK 34
+    compileSdkVersion 34
     defaultConfig {
-        applicationId "com.example.new_pwd" // 与 AndroidManifest.xml 保持一致
-        minSdkVersion 21 // 根据项目需求调整
+        applicationId "com.example.new_pwd"
+        minSdkVersion 21
         targetSdkVersion 34
         versionCode 1
         versionName "1.0"
     }
     buildTypes {
         release {
-            signingConfig null // 禁用签名
-            minifyEnabled false // 禁用代码压缩
+            signingConfig null
+            minifyEnabled false
             shrinkResources false
+        }
+    }
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "new_pwd.apk"
         }
     }
 }
