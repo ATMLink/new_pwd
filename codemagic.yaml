@@ -4,12 +4,9 @@ workflows:
     environment:
       flutter: stable
     scripts:
-      - name: Clean Project
-        script: flutter clean
-      - name: Install Dependencies
-        script: flutter pub get
-      - name: Build APK
-        script: flutter build apk --release --no-tree-shake-icons --verbose
+      - flutter clean
+      - flutter pub get
+      - flutter build apk --release --no-tree-shake-icons --verbose
     artifacts:
       - build/app/outputs/flutter-apk/new_pwd.apk
     publishing:

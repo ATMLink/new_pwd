@@ -28,4 +28,4 @@ flutter:
   fonts:
     - family: MaterialIcons
       fonts:
-        - asset: fonts/MaterialIcons-Regular.otf
+        - asset: fonts/MaterialIcons-Regular.ttf

@@ -110,7 +110,7 @@ android {
     }
     buildTypes {
         release {
-            signingConfig null
+            signingConfig null // 禁用签名
             minifyEnabled false
             shrinkResources false
         }
