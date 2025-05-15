@@ -1,10 +1,8 @@
 workflows:
   build_apk:
     name: Build Android APK
-    flutter:
-      version: 3.29.3  # 指定flutter版本，去掉了 environment 里的 flutter 和 flutter_version
     environment:
-      vars: {}  # 如果没有环境变量，可以写空，或者直接删掉这一行
+      flutter: "3.29.3"
     scripts:
       - name: Checkout code
         script: |
@@ -13,7 +11,6 @@ workflows:
 
       - name: Install dependencies
         script: |
-          # 降级 flutter_lints 到兼容的版本，避免 pub get 失败
           flutter pub remove flutter_lints
           flutter pub add --dev flutter_lints:^4.0.0
           flutter pub get
