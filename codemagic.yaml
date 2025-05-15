@@ -1,19 +1,20 @@
 workflows:
   build_apk:
+    name: Flutter APK Build
     environment:
-      flutter: "3.29.3"
+      flutter: stable
     scripts:
-      - name: Install Android Build Tools 34
-        script: |
-          sdkmanager "build-tools;34.0.0" || true
-      - name: Checkout code
-        script: |
-          flutter --version
       - name: Install dependencies
         script: |
           flutter pub get
+
       - name: Build release APK
         script: |
-          flutter build apk --release --no-shrink
+          flutter build apk --release
+
+      - name: Show built APK path
+        script: |
+          find build -name "*.apk"
+
     artifacts:
-      - build/**/app-release.apk
+      - build/app/outputs/flutter-apk/app-release.apk
