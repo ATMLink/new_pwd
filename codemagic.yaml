@@ -1,11 +1,10 @@
-# codemagic.yaml
 workflows:
   build_apk:
     name: Build Android APK
+    flutter:
+      version: 3.29.3  # 指定flutter版本，去掉了 environment 里的 flutter 和 flutter_version
     environment:
-      flutter: stable
-      # 使用与你本地相同的 Flutter 版本，避免 SDK 冲突
-      flutter_version: 3.29.3
+      vars: {}  # 如果没有环境变量，可以写空，或者直接删掉这一行
     scripts:
       - name: Checkout code
         script: |
