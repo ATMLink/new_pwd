@@ -1,27 +1,19 @@
 workflows:
   build_apk:
-    name: Build Android APK
     environment:
-      flutter: "3.29.3"   # 这里是对的，指定版本号就好，不用加flutter_version
-      android:
-        build_tools_version: "34.0.0"   # 明确指定 build tools 版本
-        gradle_version: "7.5"           # 指定兼容 Flutter 3.29.3 的 Gradle 版本
-        ndk_version: "27.0.12077973"    # NDK 版本，避免缺失
+      flutter: "3.29.3"
     scripts:
+      - name: Install Android Build Tools 34
+        script: |
+          sdkmanager "build-tools;34.0.0" || true
       - name: Checkout code
         script: |
-          echo "Using Flutter SDK version:"
           flutter --version
-
       - name: Install dependencies
         script: |
-          flutter pub remove flutter_lints || true
-          flutter pub add --dev flutter_lints:^4.0.0
           flutter pub get
-
       - name: Build release APK
         script: |
-          flutter build apk --release --no-shrink --no-tree-shake-icons
-
+          flutter build apk --release --no-shrink
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
