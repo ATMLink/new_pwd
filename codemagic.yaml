@@ -1,0 +1,27 @@
+# codemagic.yaml
+workflows:
+  build_apk:
+    name: Build Android APK
+    environment:
+      flutter: stable
+      # 使用与你本地相同的 Flutter 版本，避免 SDK 冲突
+      flutter_version: 3.29.3
+    scripts:
+      - name: Checkout code
+        script: |
+          echo "Using Flutter SDK version:"
+          flutter --version
+
+      - name: Install dependencies
+        script: |
+          # 降级 flutter_lints 到兼容的版本，避免 pub get 失败
+          flutter pub remove flutter_lints
+          flutter pub add --dev flutter_lints:^4.0.0
+          flutter pub get
+
+      - name: Build release APK
+        script: |
+          flutter build apk --release --no-shrink
+
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
