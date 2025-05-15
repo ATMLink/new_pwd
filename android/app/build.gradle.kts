@@ -40,5 +40,5 @@ android {
 }
 
 flutter {
-  source = rootProject.file("../..")
+  source = "../.."
 }
