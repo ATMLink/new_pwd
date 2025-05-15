@@ -1,19 +1,22 @@
 workflows:
-  build_apk:
+  android-build:
+    name: Android Build
     environment:
-      flutter: "3.29.3"
+      flutter: stable # 使用最新稳定版 Flutter
+      android_sdk: 34 # 匹配日志中的 Android SDK 34
     scripts:
-      - name: Install Android Build Tools 34
+      - name: Clean Project
         script: |
-          sdkmanager "build-tools;34.0.0" || true
-      - name: Checkout code
-        script: |
-          flutter --version
-      - name: Install dependencies
+          flutter clean
+      - name: Install Dependencies
         script: |
           flutter pub get
-      - name: Build release APK
+      - name: Build APK
         script: |
-          flutter build apk --release --no-shrink
+          flutter build apk --release --no-tree-shake-icons --verbose
     artifacts:
-      - build/app/outputs/flutter-apk/app-release.apk
+      - build/**/outputs/**/*.apk
+    publishing:
+      email:
+        recipients:
+          - 2937582423@qq.com # 替换为你的邮箱

@@ -42,43 +42,60 @@
 // flutter {
 //   source = file("../..")
 // }
-plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-    id 'dev.flutter.flutter-gradle-plugin'
-}
+// plugins {
+//     id 'com.android.application'
+//     id 'org.jetbrains.kotlin.android'
+//     id 'dev.flutter.flutter-gradle-plugin'
+// }
 
+// android {
+//     namespace 'com.example.new_password_generator'
+//     compileSdk 34
+
+//     defaultConfig {
+//         applicationId "com.example.new_password_generator"
+//         minSdk 21
+//         targetSdk 34
+//         versionCode 1
+//         versionName "1.0"
+//     }
+
+//     buildTypes {
+//         release {
+//             signingConfig signingConfigs.debug
+//             minifyEnabled false
+//             shrinkResources false
+//             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//         }
+//     }
+
+//     compileOptions {
+//         sourceCompatibility JavaVersion.VERSION_11
+//         targetCompatibility JavaVersion.VERSION_11
+//     }
+
+//     kotlinOptions {
+//         jvmTarget = '11'
+//     }
+// }
+
+// flutter {
+//     source '../..'
+// }
 android {
-    namespace 'com.example.new_password_generator'
-    compileSdk 34
-
+    compileSdkVersion 34 // 匹配 Codemagic 的 SDK 34
     defaultConfig {
-        applicationId "com.example.new_password_generator"
-        minSdk 21
-        targetSdk 34
+        applicationId "com.example.new_pwd" // 与 AndroidManifest.xml 保持一致
+        minSdkVersion 21 // 根据项目需求调整
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
     }
-
     buildTypes {
         release {
-            signingConfig signingConfigs.debug
-            minifyEnabled false
+            signingConfig null // 禁用签名
+            minifyEnabled false // 禁用代码压缩
             shrinkResources false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
-    }
-
-    kotlinOptions {
-        jvmTarget = '11'
-    }
-}
-
-flutter {
-    source '../..'
 }
