@@ -2,8 +2,7 @@ workflows:
   android-build:
     name: Android Build
     environment:
-      flutter: stable # 使用最新稳定版 Flutter
-      android_sdk: 34 # 匹配日志中的 Android SDK 34
+      flutter: stable
     scripts:
       - name: Clean Project
         script: |
